@@ -8,10 +8,11 @@ int main(){
     printf("inserisci la tua eta: ");
     scanf("%d", &eta);
     if (eta>=18){
-        printf("puoi votare");
+        printf("puoi votare nigga");
     }
     else{
-        printf("non puoi votare");
+        printf("non puoi votare nigga prossima volta");
+
     }
     
 }
