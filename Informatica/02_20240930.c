@@ -6,9 +6,9 @@
     int a=0;
     int b=0;
     printf("inserisci il primo numero: ");
-    scanf("%f", &a);
+    scanf("%d", &a);
     printf("inserisci il secondo numero: ");
-    scanf("%f", &b);
+    scanf("%d", &b);
     if (a>b){
         printf("a è maggiore di b");
     }
@@ -18,7 +18,7 @@
             
         }
         else{
-            if (a=b){
+            if (a==b){
                 printf("a è uguale di b");
             }
             
