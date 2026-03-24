@@ -16,6 +16,7 @@ void OrdinaFile(char nomeFile[]){
         printf("errore di apertura\n");
         exit(1);
     }
+    
     //lettura dei numeri dal file
     while(fscanf(Fp, "%d", &vett[n])==1){
         printf("elemento %d: %d", n+1, vett[n]);
@@ -33,7 +34,8 @@ void OrdinaFile(char nomeFile[]){
             }
         }
     }
-    /riapriamo il file per scriverci i numeri ordinati/
+    
+    //riapriamo il file per scriverci i numeri ordinati
     Fp=fopen(nomeFile, "w");
     if(Fp==NULL){
         printf("errore di apertura\n");
