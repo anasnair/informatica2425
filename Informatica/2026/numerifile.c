@@ -16,8 +16,8 @@ void OrdinaFile(char nomeFile[]){
     }
     
     //lettura dei numeri dal file
-    while(fscanf(Fp, "%d", &vett[i])==1){      
-        printf("elemento %d: %d", n+1, vett[i]);
+    while(fscanf(Fp, "%d", &vett[n])==1){      
+        printf("elemento %d: %d", n+1, vett[n]);
         n++;
     }
     fclose(Fp);
