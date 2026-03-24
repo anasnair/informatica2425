@@ -7,17 +7,40 @@ modo tale da contenere gli stessi numeri ma ordinati in senso decrescente
 
 void OrdinaFile(char nomeFile[]){
     FILE *Fp;
-    int vett[100], i=0;
+    int vett[100], i, j, tmp, n=0;
 
     Fp=fopen(nomeFile, "r");
     if(Fp==NULL){
         printf("errore di apertura\n");
-        return 1;
+        exit(1);
     }
+    
     //lettura dei numeri dal file
     while(fscanf(Fp, "%d", &vett[i])==1){      
-        printf("elemento %d: %d", i+1, vett[i]);
-        i++;
+        printf("elemento %d: %d", n+1, vett[i]);
+        n++;
+    }
+    fclose(Fp);
+    
+    //ordinamento del bubble sort
+    for(int i=0; i<n-1; i++){
+        for(j=i+1; j<n; j++){
+            if(vett[i] < vett[j]){
+                tmp = vett[j];
+                vett[i] = vett[j];
+                vett[j] = tmp;
+            }
+        }
+    }
+    
+    //riapriamo il file per scriverci i numeri ordinati
+    Fp=fopen(nomeFile, "w");
+    if(Fp==NULL){
+        printf("errore di apertura\n");
+        exit(1);
+    }
+    for(i=0;i<n;i++){
+        fprintf(Fp, "%d", vett[i]);
     }
     fclose(Fp);
 }
