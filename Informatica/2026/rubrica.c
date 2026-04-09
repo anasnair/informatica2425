@@ -2,6 +2,7 @@
 dei contatti e ne visualizzi l'elenco*/
 
 #include <stdio.h>
+#include <stdlib.h>
 typedef struct{
     char nome[30];
     char telefono[15];
@@ -17,9 +18,9 @@ void aggiungiContatto(){
 
     contatto c;
     printf("inserisci nome: \n");
-    scanf("%[^\n]", c.nome);
+    scanf("%s", c.nome);
     printf("inserisci telefono: \n");
-    scanf("%[^\n]", c.telefono);
+    scanf("%s", c.telefono);
 
     fwrite(&c,sizeof(contatto), 1, fp);
     fclose(fp);
@@ -35,9 +36,9 @@ void stampaContatti(){
 
     contatto c;
     printf("\n---RUBRICA---\n");
-    while(fread(&c,sizeof(contatto), 1, fp)==1){
-        printf("nome: %[^\n]", c.nome);
-        printf("telefono: %[^\n]", c.telefono);
+    while(fread(&c,sizeof(contatto), 1, fp) != 0){
+        printf(" %s", c.nome);
+        printf(" %s", c.telefono);
     }
 
     fclose(fp);
@@ -68,5 +69,5 @@ int main(){
                 printf("scelta non valida\n");
         }
 
-    }while(scelta !=0);
+    }while(scelta != 0);
 }
