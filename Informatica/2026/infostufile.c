@@ -22,16 +22,16 @@ void scriveStudenti(char *nome_file, int n_studenti){
     }
     for(int i=0; i<n_studenti;i++){
         Studente s;
-        printf("inserisci nome studente %d", i+1);
-        scanf("%49s", s.nome);
+        printf("inserisci nome studente %d: ", i+1);
+        scanf("%19s", s.nome);
         getchar();
 
-        printf("inserisci eta studente %d", i+1);
-        scanf("%49s", s.eta);
+        printf("inserisci eta studente %d: ", i+1);
+        scanf("%d", &s.eta);
         getchar();
 
-        printf("inserisci media studente %d", i+1);
-        scanf("%49s", s.media);
+        printf("inserisci media studente %d: ", i+1);
+        scanf("%f", &s.media);
         getchar();
         fwrite(&s, sizeof(Studente), 1, f);
     }
