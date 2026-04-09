@@ -7,7 +7,7 @@ typedef struct{
     char telefono[15];
 }contatto;
 
-void aggiungiContatto(contatto c){
+void aggiungiContatto(){
     FILE *fp= fopen("numeri.bin", "ab");
 
     if(fp==NULL){
@@ -15,7 +15,7 @@ void aggiungiContatto(contatto c){
         return;
     }
 
-    Contatto c;
+    contatto c;
     printf("inserisci nome: \n");
     scanf("%[^\n]", c.nome);
     printf("inserisci telefono: \n");
