@@ -12,7 +12,7 @@ void aggiungiContatto(contatto c){
 
     if(fp==NULL){
         printf("errore apertura file\n");
-        return
+        return;
     }
 
     Contatto c;
