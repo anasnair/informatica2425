@@ -3,6 +3,7 @@ dei contatti e ne visualizzi l'elenco*/
 
 #include <stdio.h>
 #include <stdlib.h>
+
 typedef struct{
     char nome[30];
     char telefono[15];
