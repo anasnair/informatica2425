@@ -8,6 +8,52 @@ typedef struct {
     char sesso; // 'M' o 'F'
 } contatto;
 
+// Funzione per verificare se il numero esiste già
+int numeroEsiste(const char *telefono) {
+    FILE *fp = fopen("rubrica.dat", "rb");
+    if (fp == NULL) {
+        return 0; // Se il file non esiste, sicuramente il numero non c'è
+    }
+    contatto c;
+    while (fread(&c, sizeof(contatto), 1, fp) == 1) {
+        if (strcmp(c.telefono, telefono) == 0) {
+            fclose(fp);
+            return 1; // Numero trovato
+        }
+    }
+    fclose(fp);
+    return 0; // Numero non trovato
+}
+
+// Funzione per cercare un contatto per numero
+void cercaPerNumero() {
+    char num[15];
+    printf("Inserisci il numero da cercare: ");
+    scanf("%14s", num);
+
+    FILE *fp = fopen("rubrica.dat", "rb");
+    if (fp == NULL) {
+        printf("Rubrica vuota\n");
+        return;
+    }
+
+    contatto c;
+    int trovato = 0;
+    while (fread(&c, sizeof(contatto), 1, fp) == 1) {
+        if (strcmp(c.telefono, num) == 0) {
+            printf("Contatto trovato:\n");
+            printf("Nome: %s | Telefono: %s | Sesso: %c\n", c.nome, c.telefono, c.sesso);
+            trovato = 1;
+            break;
+        }
+    }
+    if (!trovato) {
+        printf("Nessun contatto trovato con questo numero.\n");
+    }
+    fclose(fp);
+}
+
+// Aggiungi contatto con verifica del numero
 void aggiungiContatto() {
     FILE *fp = fopen("rubrica.dat", "ab");
     if (fp == NULL) {
@@ -20,12 +66,22 @@ void aggiungiContatto() {
     scanf("%29s", c.nome);
     printf("Inserisci telefono: ");
     scanf("%14s", c.telefono);
+
+    // Controllo se il numero esiste già
+    if (numeroEsiste(c.telefono)) {
+        printf("Il numero %s è già presente in rubrica. Impossibile aggiungerlo.\n", c.telefono);
+        fclose(fp);
+        return;
+    }
+
     printf("Inserisci sesso (M/F): ");
     scanf(" %c", &c.sesso); // spazio prima di %c per catturare eventuali spazi
 
     fwrite(&c, sizeof(contatto), 1, fp);
     fclose(fp);
 }
+
+// Restanti funzioni invariata...
 
 void stampaContatti() {
     FILE *fp = fopen("rubrica.dat", "rb");
@@ -42,6 +98,8 @@ void stampaContatti() {
 
     fclose(fp);
 }
+
+// La funzione eliminaContatto() e separaPerSesso() restano uguali...
 
 void eliminaContatto() {
     FILE *fp = fopen("rubrica.dat", "rb");
@@ -113,6 +171,7 @@ int main() {
         printf("2. Visualizza contatti\n");
         printf("3. Elimina contatto\n");
         printf("4. Separa i contatti in base al sesso\n");
+        printf("5. Cerca contatto per numero\n");
         printf("0. Esci\n");
         printf("Scelta: ");
         scanf("%d", &scelta);
@@ -129,6 +188,9 @@ int main() {
                 break;
             case 4:
                 separaPerSesso();
+                break;
+            case 5:
+                cercaPerNumero();
                 break;
             case 0:
                 printf("Uscita in corso...\n");
