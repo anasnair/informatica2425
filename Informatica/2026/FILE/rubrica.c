@@ -8,24 +8,45 @@ typedef struct {
     char sesso; // 'M' o 'F'
 } contatto;
 
-// Funzione per verificare se il numero esiste già
-int numeroEsiste(const char *telefono) {
-    FILE *fp = fopen("rubrica.dat", "rb");
+// La funzione numeroEsiste e cercaPerNumero sono state rimosse
+// ora il controllo del numero e la ricerca sono fatti direttamente
+
+void aggiungiContatto() {
+    FILE *fp = fopen("rubrica.dat", "ab");
     if (fp == NULL) {
-        return 0; // Se il file non esiste, sicuramente il numero non c'è
+        printf("Errore apertura file\n");
+        return;
     }
+
     contatto c;
-    while (fread(&c, sizeof(contatto), 1, fp) == 1) {
-        if (strcmp(c.telefono, telefono) == 0) {
-            fclose(fp);
-            return 1; // Numero trovato
+    printf("Inserisci nome: ");
+    scanf("%29s", c.nome);
+    printf("Inserisci telefono: ");
+    scanf("%14s", c.telefono);
+
+    // Controllo se il numero esiste già direttamente qui
+    FILE *fpCheck = fopen("rubrica.dat", "rb");
+    int numeroTrovato = 0;
+    if (fpCheck != NULL) {
+        contatto cCheck;
+        while (fread(&cCheck, sizeof(contatto), 1, fpCheck) == 1) {
+            if (strcmp(cCheck.telefono, c.telefono) == 0) {
+                printf("Il numero %s è già presente in rubrica. Impossibile aggiungerlo.\n", c.telefono);
+                fclose(fpCheck);
+                fclose(fp);
+                return;
+            }
         }
+        fclose(fpCheck);
     }
+
+    printf("Inserisci sesso (M/F): ");
+    scanf(" %c", &c.sesso); // spazio prima di %c per catturare eventuali spazi
+
+    fwrite(&c, sizeof(contatto), 1, fp);
     fclose(fp);
-    return 0; // Numero non trovato
 }
 
-// Funzione per cercare un contatto per numero
 void cercaPerNumero() {
     char num[15];
     printf("Inserisci il numero da cercare: ");
@@ -53,34 +74,6 @@ void cercaPerNumero() {
     fclose(fp);
 }
 
-// Aggiungi contatto con verifica del numero
-void aggiungiContatto() {
-    FILE *fp = fopen("rubrica.dat", "ab");
-    if (fp == NULL) {
-        printf("Errore apertura file\n");
-        return;
-    }
-
-    contatto c;
-    printf("Inserisci nome: ");
-    scanf("%29s", c.nome);
-    printf("Inserisci telefono: ");
-    scanf("%14s", c.telefono);
-
-    // Controllo se il numero esiste già
-    if (numeroEsiste(c.telefono)) {
-        printf("Il numero %s è già presente in rubrica. Impossibile aggiungerlo.\n", c.telefono);
-        fclose(fp);
-        return;
-    }
-
-    printf("Inserisci sesso (M/F): ");
-    scanf(" %c", &c.sesso); // spazio prima di %c per catturare eventuali spazi
-
-    fwrite(&c, sizeof(contatto), 1, fp);
-    fclose(fp);
-}
-
 // Restanti funzioni invariata...
 
 void stampaContatti() {
@@ -98,8 +91,6 @@ void stampaContatti() {
 
     fclose(fp);
 }
-
-// La funzione eliminaContatto() e separaPerSesso() restano uguali...
 
 void eliminaContatto() {
     FILE *fp = fopen("rubrica.dat", "rb");
