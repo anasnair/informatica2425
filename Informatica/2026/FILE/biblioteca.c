@@ -14,12 +14,12 @@ TUTTO VIENE GESTITO DA FILE BINARI*/
 typedef struct{
       char autore[30];
       char titolo[30];
-      int ISBN[20];
+      int ISBN;
       int anno;
 }Libro;
 
-void inseriscilibro(const char *fileName){
-    FILE *fp = fopen(fileName, "ab");
+void inseriscilibro(){
+    FILE *fp = fopen("libreria.dat", "ab");
     int n;
     Libro p;
 
@@ -36,10 +36,10 @@ void inseriscilibro(const char *fileName){
         scanf("%d", &p.ISBN);
         getchar();
         printf("titolo: ");
-        scanf("%s", p.titolo);
+        scanf("%[^\n]", p.titolo);
         getchar();
         printf("autore: ");
-        scanf("%s", &p.autore);
+        scanf("%[^\n]", p.autore);
         getchar();
         printf("anno pubblicazione: ");
         scanf("%d", &p.anno);
@@ -50,8 +50,8 @@ void inseriscilibro(const char *fileName){
     fclose(fp);
 }
 
-void stampaLibro(const char *fileName){
-    FILE *fp = fopen(fileName, "rb");
+void stampaLibro(){
+    FILE *fp = fopen("libreria.dat", "rb");
     Libro p;
 
     if(fp==NULL){
@@ -67,19 +67,24 @@ void stampaLibro(const char *fileName){
        
 }
 
-void cercalibro(const char *fileName, int _id){
-    FILE *fp = fopen(fileName, "rb");
+void cercalibro(){
+    FILE *fp = fopen("libreria.dat", "rb");
     Libro p;
-    int trovato;
+    int trovato=0;
+    int _id;
 
     if(fp==NULL){
         printf("libreria vuota\n");
         return;
     } 
+
+    printf("Inserisci l'ISBN del libro da cercare: ");
+    scanf("%d", &_id);
+    getchar();  
+
     while(fread(&p, sizeof(Libro), 1, fp)==1 && !trovato){
         if(p.ISBN == _id){
             printf("\ntrovato titolo: %s - autore: %s - anno pubblicazione: %d", p.titolo, p.autore, p.anno);
-            trovato = 1;
         }
     }  
     if(!trovato)
@@ -108,7 +113,7 @@ void eliminalibro(){
 
     while( fread(&p, sizeof(Libro), 1, fp) ){
         if ( strcmp(p.titolo,cerca)==0 )
-            printf("Trovato!..l'elemento sarà eliminato.");
+            printf("Trovato!..l'elemento sarà eliminato.\n");
         else
             fwrite(&p, sizeof(Libro), 1, fpTmp);
     }
@@ -127,8 +132,8 @@ void eliminalibro(){
 
 }
 
-void modificaIsbn(const char *fileName, int _id, float nId){
-    FILE *fp = fopen(fileName, "rb+");
+void modificaIsbn( int _id, float nId){
+    FILE *fp = fopen("libreria.dat", "rb+");
     Libro p;
     
     if(fp==NULL){
@@ -195,18 +200,20 @@ int main() {
 
         switch(scelta) {
             case 1:
-                aggiungiLibro();
+               inseriscilibro();
                 break;
             case 2:
                 stampaLibro();
                 break;
             case 3:
-                cercalibro();
+                cercalibro(); 
                 break;
             case 4:
                 eliminalibro();
+                break;
             case 5:
                 separaLibri();
+                break;
             case 0:
                 printf("Uscita dal programma.\n");
                 break;
