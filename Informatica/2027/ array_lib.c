@@ -22,3 +22,47 @@ void stampaColonna(const int vett[], int dimensione) {
         printf("%d\n", vett[i]);
     }
 }
+
+void stampaVettore(int vet[], int dim) {
+    for (int i = 0; i < dim; i++) {
+        printf("%d ", vet[i]);
+    }
+    printf("\n");
+}
+
+void trovavaloreMassimo(int vet[], int dim) {
+    int massimo = vet[0];
+
+    for (int i = 1; i < dim; i++) {
+        if (vet[i] > massimo) {
+            massimo = vet[i];
+        }
+    }
+
+    printf("Valore massimo: %d\n", massimo);
+}
+
+int contaValore(int vet[], int dim, int valore) {
+    int conteggio = 0;
+
+    for (int i = 0; i < dim; i++) {
+        if (vet[i] == valore) {
+            conteggio++;
+        }
+    }
+
+    return conteggio;
+}
+
+int ricercaSostituisci(int vet[], int dim, int src, int sost) {
+    int sostituzioni = 0;
+
+    for (int i = 0; i < dim; i++) {
+        if (vet[i] == src) {
+            vet[i] = sost;
+            sostituzioni++;
+        }
+    }
+
+    return sostituzioni;
+}
