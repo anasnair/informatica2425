@@ -36,12 +36,4 @@ void trovavaloreMassimo(int vet[], int dim);
  */
 int contaValore(int vet[], int dim, int valore);
 
-/** Sostituisce tutte le occorrenze di un valore in un array.
- * @param vet Vettore in cui effettuare la ricerca e la sostituzione.
- * @param dim Dimensione dell'array.
- * @param src Valore da sostituire.
- * @param sost Nuovo valore da inserire.
- * @return Numero di sostituzioni effettuate.
- */
-int ricercaSostituisci(int vet[], int dim, int src, int sost);
 

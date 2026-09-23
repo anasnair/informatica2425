@@ -38,12 +38,6 @@ int main(){
     printf("Inserisci il valore sostitutivo: ");
     scanf("%d", &sost);
 
-    int numSostituzioni = ricercaSostituisci(vet, DIM, src, sost);
-
-    printf("Vettore dopo la sostituzione:\n");
-    stampaVettore(vet, DIM);
-
-    printf("Sostituzioni effettuate: %d\n", numSostituzioni);
 
     return 0;
 }

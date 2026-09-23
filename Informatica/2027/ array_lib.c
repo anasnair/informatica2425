@@ -54,15 +54,3 @@ int contaValore(int vet[], int dim, int valore) {
     return conteggio;
 }
 
-int ricercaSostituisci(int vet[], int dim, int src, int sost) {
-    int sostituzioni = 0;
-
-    for (int i = 0; i < dim; i++) {
-        if (vet[i] == src) {
-            vet[i] = sost;
-            sostituzioni++;
-        }
-    }
-
-    return sostituzioni;
-}
