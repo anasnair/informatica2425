@@ -4,7 +4,7 @@
 
 #define DIM 3
 
-void printMatrix(int righe, int colonne, int m[righe][colonne]) {
+void matrix_unitaria(int righe, int colonne, int m[righe][colonne]) {
 	for (int i = 0; i < righe; i++) {
 		for (int j = 0; j < colonne; j++) {
 			printf("%d ", m[i][j]);
@@ -20,6 +20,6 @@ int main(){
 		{0, 0, 1}
 	};
 
-	printMatrix(DIM, DIM, m);
+	matrix_unitaria(DIM, DIM, m);
 	return 0;
 }
