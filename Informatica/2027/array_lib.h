@@ -36,4 +36,23 @@ void trovavaloreMassimo(int vet[], int dim);
  */
 int contaValore(int vet[], int dim, int valore);
 
+/** Carica un array con valori casuali compresi tra due limiti.
+ * @param vet Vettore da riempire.
+ * @param dim Dimensione dell'array.
+ * @param min Valore minimo da inserire.
+ * @param max Valore massimo da inserire.
+ */
+void caricaVettore(int _vet[], int _dim, int _min, int _max);
 
+/** Stampa tutti gli elementi di un array.
+ * @param _vet Vettore da stampare.
+ * @param _dim Dimensione dell'array.
+ */
+void stampaVettore(int _vet[], int _dim);
+
+/** Calcola la media aritmetica degli elementi di un array.
+ * @param _vet Vettore di cui calcolare la media.
+ * @param _dim Dimensione dell'array.
+ * @return La media degli elementi, oppure 0 se l'array è vuoto.
+ */
+float mediaVettore(int _vet[], int _dim);

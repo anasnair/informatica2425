@@ -54,3 +54,24 @@ int contaValore(int vet[], int dim, int valore) {
     return conteggio;
 }
 
+void caricaVettore(int _vet[], int _dim, int _min, int _max) {
+    srand(time(NULL));
+    for (int i = 0; i < _dim; i++) {
+        _vet[i] = rand() % (_max - _min + 1) + _min;
+    }
+}
+
+void stampaVettore(int _vet[], int _dim) {
+    for (int i = 0; i < _dim; i++) {
+        printf("%d ", _vet[i]);
+    }
+    printf("\n");
+}
+
+float mediaVettore(int _vet[], int _dim){
+    int totale = 0;
+    for(int i=0;i<_dim;i++){
+        totale = totale + _vet[i];
+    }
+    return ((float)totale)/_dim;
+}
