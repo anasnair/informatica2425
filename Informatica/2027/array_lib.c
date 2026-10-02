@@ -62,13 +62,6 @@ void caricaVettore(int _vet[], int _dim, int _min, int _max) {
     }
 }
 
-void stampaVettore(int _vet[], int _dim) {
-    for (int i = 0; i < _dim; i++) {
-        printf("%d ", _vet[i]);
-    }
-    printf("\n");
-}
-
 float mediaVettore(int _vet[], int _dim){
     int totale = 0;
     for(int i=0;i<_dim;i++){
@@ -106,9 +99,9 @@ int getValoreAt(int _vet[], int _dim, int _index){
     return true;
  }
 
- /*-----------------------------------------------------------------------------------*/
+ /*---------------------------------MATRICI---------------------------------------*/
 
-void caricaMatrice(int _m[_rows][_cols], int _rows, int _cols) {
+void caricaMatrice(int _rows, int _cols, int _m[_rows][_cols]) {
     for (int i = 0; i < _rows; i++) {
         for (int j = 0; j < _cols; j++) {
             _m[i][j] = 1 + rand() % 25;
@@ -116,10 +109,24 @@ void caricaMatrice(int _m[_rows][_cols], int _rows, int _cols) {
     }
 }
 
-void stampaMatrice(int _m[_rows][_cols], int _rows, int _cols) {
+void stampaMatrice(int _rows, int _cols, int _m[_rows][_cols]) {
     for (int i = 0; i < _rows; i++) {
         for (int j = 0; j < _cols; j++) {
             printf("%3d ", _m[i][j]);
+        }
+        printf("\n");
+    }
+}
+void scacchieraM(int _rows, int _cols, int _m[_rows][_cols]){
+    for (int i = 0; i < _rows; i++) {
+        for (int j = 0; j < _cols; j++) {
+            _m[i][j] = (i + j) % 2;
+        }
+    }
+
+    for (int i = 0; i < _rows; i++) {
+        for (int j = 0; j < _cols; j++) {
+            printf("%d ", _m[i][j]);
         }
         printf("\n");
     }

@@ -90,4 +90,11 @@ void caricaMatrice(int _rows, int _cols, int _m[_rows][_cols]);
  */
 void stampaMatrice(int _rows, int _cols, int _m[_rows][_cols]);
 
+/** Stampa una matrice a scacchiera di 0 e 1.
+ * @param _rows Numero di righe della matrice.
+ * @param _cols Numero di colonne della matrice.
+ * @param _m Matrice da stampare.
+ */
+void scacchieraM(int _rows, int _cols, int _m[_rows][_cols]);
+
 
