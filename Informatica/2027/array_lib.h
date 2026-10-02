@@ -56,3 +56,21 @@ void stampaVettore(int _vet[], int _dim);
  * @return La media degli elementi, oppure 0 se l'array è vuoto.
  */
 float mediaVettore(int _vet[], int _dim);
+
+/** Restituisce il valore contenuto in una posizione specifica dell'array.
+ * @param _vet Vettore da cui leggere il valore.
+ * @param _dim Dimensione dell'array.
+ * @param _index Indice della cella da leggere.
+ * @return Valore presente nella cella richiesta; -1 se indice non esiste.
+ */
+ int getValoreAt(int _vet[], int _dim, int _index);
+
+/** Stampa a video il sotto-array compreso tra due indici.
+ * @param _vet Vettore da cui leggere il sotto-array.
+ * @param _dim Dimensione del vettore.
+ * @param _index1 Indice iniziale del sotto-array (incluso).
+ * @param _index2 Indice finale del sotto-array (incluso).
+ * @return true se il sotto-array è valido e viene stampato, false in caso contrario.
+ */
+ bool stampaSubArray(int _vet[], int _dim, int _index1, int _index2);
+

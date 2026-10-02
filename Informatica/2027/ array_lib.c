@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "array_lib.h"
 
 void inizializza(int vett[], int dimensione) {
@@ -75,3 +76,32 @@ float mediaVettore(int _vet[], int _dim){
     }
     return ((float)totale)/_dim;
 }
+
+int getValoreAt(int _vet[], int _dim, int _index){
+    if(_index >= 0 && _index < _dim)
+        return _vet[_index];
+     else 
+        return -1; 
+    
+}
+
+ bool stampaSubArray(int _vet[], int _dim, int _index1, int _index2){
+    if (_index1 < 0 || _index1 >= _dim ) {
+        return false; 
+    }
+    if (_index2 < 0 || _index2 >= _dim ) {
+        return false; 
+    }
+    if (_index1 > _index2 ) {
+        return false; 
+    }
+
+    if (_index1 == _index2 ) {
+        return false; 
+    }
+
+    for (int i = _index1; i <= _index2; i++) {
+        printf("%d ", _vet[i]);
+    }
+    return true;
+ }
