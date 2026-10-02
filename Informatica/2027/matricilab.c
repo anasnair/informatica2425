@@ -8,6 +8,9 @@
 int main(){
 
     int matrice[ROWS][COLS];
+
+    caricaMatrice(ROWS, COLS, matrice);
+    stampaMatrice(ROWS, COLS, matrice);
     
     return 0;
 }
