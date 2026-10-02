@@ -105,3 +105,23 @@ int getValoreAt(int _vet[], int _dim, int _index){
     }
     return true;
  }
+
+ /*-----------------------------------------------------------------------------------*/
+
+void caricaMatrice(int _m[_rows][_cols], int _rows, int _cols) {
+    for (int i = 0; i < _rows; i++) {
+        for (int j = 0; j < _cols; j++) {
+            _m[i][j] = 1 + rand() % 25;
+        }
+    }
+}
+
+void stampaMatrice(int _m[_rows][_cols], int _rows, int _cols) {
+    for (int i = 0; i < _rows; i++) {
+        for (int j = 0; j < _cols; j++) {
+            printf("%3d ", _m[i][j]);
+        }
+        printf("\n");
+    }
+}
+
