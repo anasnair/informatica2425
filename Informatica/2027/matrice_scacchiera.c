@@ -1,12 +1,18 @@
 
+#include <stdbool.h>
 #include <stdio.h>
 
-void scacchieraM(int _rows, int _cols, int _m[_rows][_cols]){
-    for (int i = 0; i < _rows; i++) {
-        for (int j = 0; j < _cols; j++) {
-            _m[i][j] = (i + j) % 2;
-        }
-    }
+#define DIM 5
+
+bool scacchieraM(int DIM, int _m[DIM][DIM]) {
+
+  for(i = 0; i < DIM; i++){
+    for(j = 0; j < DIM; j++){
+      if(_m[i][j] != (i + j) % 2)
+         return true;
+     }
+  }
+    return false;
 }
 
 
