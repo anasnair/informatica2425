@@ -99,6 +99,34 @@ int getValoreAt(int _vet[], int _dim, int _index){
     return true;
  }
 
+ void bubbleSort(int vett[], int dim, int _mode){
+    int temp;
+    int flag = 0;
+    int i = 0;
+
+    while (flag == 0) {
+        flag = 1;
+        for (int j = 0; j < dim - 1 - i; j++) {
+            if (_mode == 1) {
+                if (vett[j] < vett[j + 1]) {
+                    flag = 0;
+                    temp = vett[j];
+                    vett[j] = vett[j + 1];
+                    vett[j + 1] = temp;
+                }
+            } else {
+                if (vett[j] > vett[j + 1]) {
+                    flag = 0;
+                    temp = vett[j];
+                    vett[j] = vett[j + 1];
+                    vett[j + 1] = temp;
+                }
+            }
+        }
+        i++;
+    }
+}
+
  /*---------------------------------MATRICI---------------------------------------*/
 
 void caricaMatrice(int _rows, int _cols, int _m[_rows][_cols]) {
@@ -118,23 +146,24 @@ void stampaMatrice(int _rows, int _cols, int _m[_rows][_cols]) {
     }
 }
 
-bool scacchieraM(int DIM, int _m[DIM][DIM]) {
-
-  for(i = 0; i < DIM; i++){
-    for(j = 0; j < DIM; j++){
-      if(_m[i][j] != (i + j) % 2)
-         return true;
-     }
+int scacchiera(int _rows, int _cols, int _m[_rows][_cols]) {
+  for (int i = 0; i < _rows; i++) {
+    for (int j = 0; j < _cols; j++) {
+      if (_m[i][j] != (i + j) % 2)
+        return 1;
+    }
   }
-    return false;
+
+  return 0;
 }
 
-int maxSumM(int _m[DIM][DIM], int *somma) {
+
+int maxSumM(int _rows, int _cols, int _m[_rows][_cols], int *somma) {
     int max = _m[0][0];
     int totale = 0;
 
-    for (int i = 0; i < DIM; i++) {
-        for (int j = 0; j < DIM; j++) {
+    for (int i = 0; i < _rows; i++) {
+        for (int j = 0; j < _cols; j++) {
             if (_m[i][j] > max) {
                 max = _m[i][j];
             }
@@ -144,5 +173,5 @@ int maxSumM(int _m[DIM][DIM], int *somma) {
 
     *somma = totale;
     return max;
-}
+}   
 

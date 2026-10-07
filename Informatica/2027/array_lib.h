@@ -74,7 +74,15 @@ float mediaVettore(int _vet[], int _dim);
  */
  bool stampaSubArray(int _vet[], int _dim, int _index1, int _index2);
 
- /*--------------------------------------------------------------------------------------------------------------*/
+ /**
+ * Ordina un vettore in ordine crescente o decrescente.
+ * @param _vet Vettore da ordinare.
+ * @param dim Dimensione del vettore.
+ * @param _mode Modalità di ordinamento: valore positivo per crescente, valore negativo per decrescente.
+ */
+void bubbleSort(int _vet[], int dim, int _mode);
+
+/*--------------------------------------------------------------------------------------------------------------*/
 
 /** Carica una matrice con valori iniziali.
  * @param _rows Numero di righe della matrice.
@@ -109,5 +117,3 @@ bool scacchieraM(int _rows, int _cols, int _m[_rows][_cols]);
  * @return Il valore massimo calcolato.
  */
 int maxSumM(int _rows, int _cols, int _m[_rows][_cols], int *somma);
-
-
