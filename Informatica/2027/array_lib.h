@@ -95,6 +95,19 @@ void stampaMatrice(int _rows, int _cols, int _m[_rows][_cols]);
  * @param _cols Numero di colonne della matrice.
  * @param _m Matrice da stampare.
  */
-void scacchieraM(int _rows, int _cols, int _m[_rows][_cols]);
+/** Stampa una matrice a scacchiera di 0 e 1.
+ * @param _rows Numero di righe della matrice.
+ * @param _cols Numero di colonne della matrice.
+ * @param _m Matrice da stampare.
+ * @return true se la matrice rispetta il pattern a scacchiera, false in caso contrario.
+ */
+bool scacchieraM(int _rows, int _cols, int _m[_rows][_cols]);
+
+/** Calcola il massimo tra le somme ottenute sulla matrice.
+ * @param _m Matrice di cui calcolare il massimo della somma.
+ * @param somma Puntatore in cui salvare la somma associata al valore massimo.
+ * @return Il valore massimo calcolato.
+ */
+int maxSumM(int _rows, int _cols, int _m[_rows][_cols], int *somma);
 
 
