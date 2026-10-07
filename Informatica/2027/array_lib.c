@@ -117,18 +117,32 @@ void stampaMatrice(int _rows, int _cols, int _m[_rows][_cols]) {
         printf("\n");
     }
 }
-void scacchieraM(int _rows, int _cols, int _m[_rows][_cols]){
-    for (int i = 0; i < _rows; i++) {
-        for (int j = 0; j < _cols; j++) {
-            _m[i][j] = (i + j) % 2;
+
+bool scacchieraM(int DIM, int _m[DIM][DIM]) {
+
+  for(i = 0; i < DIM; i++){
+    for(j = 0; j < DIM; j++){
+      if(_m[i][j] != (i + j) % 2)
+         return true;
+     }
+  }
+    return false;
+}
+
+int maxSumM(int _m[DIM][DIM], int *somma) {
+    int max = _m[0][0];
+    int totale = 0;
+
+    for (int i = 0; i < DIM; i++) {
+        for (int j = 0; j < DIM; j++) {
+            if (_m[i][j] > max) {
+                max = _m[i][j];
+            }
+            totale += _m[i][j];
         }
     }
 
-    for (int i = 0; i < _rows; i++) {
-        for (int j = 0; j < _cols; j++) {
-            printf("%d ", _m[i][j]);
-        }
-        printf("\n");
-    }
+    *somma = totale;
+    return max;
 }
 
