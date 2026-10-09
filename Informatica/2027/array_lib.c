@@ -24,7 +24,7 @@ void stampaColonna(const int vett[], int dimensione) {
     }
 }
 
-void stampaVettore(int vet[], int dim) {
+void stampavet(int vet[], int dim) {
     for (int i = 0; i < dim; i++) {
         printf("%d ", vet[i]);
     }
@@ -55,14 +55,14 @@ int contaValore(int vet[], int dim, int valore) {
     return conteggio;
 }
 
-void caricaVettore(int _vet[], int _dim, int _min, int _max) {
+void caricavet(int _vet[], int _dim, int _min, int _max) {
     srand(time(NULL));
     for (int i = 0; i < _dim; i++) {
         _vet[i] = rand() % (_max - _min + 1) + _min;
     }
 }
 
-float mediaVettore(int _vet[], int _dim){
+float mediavet(int _vet[], int _dim){
     int totale = 0;
     for(int i=0;i<_dim;i++){
         totale = totale + _vet[i];
@@ -125,7 +125,7 @@ void bubbleSortDECRE(int vett[], int dim){
 
  /*---------------------------------MATRICI---------------------------------------*/
 
-void caricaMatrice(int _rows, int _cols, int _m[_rows][_cols]) {
+void caricam(int _rows, int _cols, int _m[_rows][_cols]) {
     for (int i = 0; i < _rows; i++) {
         for (int j = 0; j < _cols; j++) {
             _m[i][j] = 1 + rand() % 25;
@@ -133,7 +133,7 @@ void caricaMatrice(int _rows, int _cols, int _m[_rows][_cols]) {
     }
 }
 
-void stampaMatrice(int _rows, int _cols, int _m[_rows][_cols]) {
+void stampam(int _rows, int _cols, int _m[_rows][_cols]) {
     for (int i = 0; i < _rows; i++) {
         for (int j = 0; j < _cols; j++) {
             printf("%3d ", _m[i][j]);
@@ -171,7 +171,7 @@ int maxSumM(int _rows, int _cols, int _m[_rows][_cols], int *somma) {
     return max;
 }   
 
-float mediaMatrice(int _rows, int _cols, int _m[_rows][_cols]) {
+float mediam(int _rows, int _cols, int _m[_rows][_cols]) {
     if (_rows <= 0 || _cols <= 0) {
         return 0;
     }
@@ -186,7 +186,7 @@ float mediaMatrice(int _rows, int _cols, int _m[_rows][_cols]) {
     return totale / (_rows * _cols);
 }
 
-void MatriceSommaRighe(int _rows, int _cols, int _m[_rows][_cols]) {
+void mSomma_rows(int _rows, int _cols, int _m[_rows][_cols]) {
     for (int i = 0; i < _rows; i++) {
         int somma = 0;
         for (int j = 0; j < _cols; j++) {
@@ -214,6 +214,22 @@ void sommaTriangoli(int _rows, int _cols, int _m[_rows][_cols]) {
 
     printf("Somma triangolo inferiore: %d\n", sommaInf);
     printf("Somma triangolo superiore: %d\n", sommaSup);
+}
+
+int trovaVetMatrice(int _rows, int _cols, int m[_rows][_cols], int vet[]) {
+    for (int i = 0; i < _rows; i++) {
+        int uguali = 0;
+
+        for (int j = 0; j < _cols; j++) {
+            if (m[i][j] == vet[j]) {
+                uguali++;
+            }
+        }
+        if (uguali == _cols) {
+            return 1;
+        }
+    }
+    return 0;
 }
 
 

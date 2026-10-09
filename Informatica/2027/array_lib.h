@@ -90,7 +90,7 @@ void bubbleSortDECRE(int vett[], int dim);
 
 
 
-/*--------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------MATRICI------------------------------------------------------*/
 
 /** Carica una matrice con valori iniziali.
  * @param _rows Numero di righe della matrice.
@@ -147,4 +147,14 @@ void MatriceSommaRighe(int _rows, int _cols, int _m[_rows][_cols]);
  * @param _m Matrice di cui calcolare la somma dei triangoli.
  */
 void sommaTriangoli(int _rows, int _cols, int _m[_rows][_cols]);
+
+/**
+ * Confronta un vettore con una colonna della matrice.
+ * @param _rows Numero di righe della matrice.
+ * @param _cols Numero di colonne della matrice.
+ * @param m Matrice in cui si cerca la colonna da confrontare.
+ * @param vet Vettore da confrontare con la colonna della matrice.
+ * @return 1 se il vettore coincide con una colonna, 0 altrimenti.
+ */
+int trovaVetMatrice(int _rows, int _cols, int m[_rows][_cols], int vet[]);
 
