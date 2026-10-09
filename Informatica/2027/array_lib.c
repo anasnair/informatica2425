@@ -99,31 +99,27 @@ int getValoreAt(int _vet[], int _dim, int _index){
     return true;
  }
 
- void bubbleSort(int vett[], int dim, int _mode){
-    int temp;
-    int flag = 0;
-    int i = 0;
-
-    while (flag == 0) {
-        flag = 1;
+void bubbleSortCRESCE(int vett[], int dim){
+    for (int i = 0; i < dim - 1; i++) {
         for (int j = 0; j < dim - 1 - i; j++) {
-            if (_mode == 1) {
-                if (vett[j] < vett[j + 1]) {
-                    flag = 0;
-                    temp = vett[j];
-                    vett[j] = vett[j + 1];
-                    vett[j + 1] = temp;
-                }
-            } else {
-                if (vett[j] > vett[j + 1]) {
-                    flag = 0;
-                    temp = vett[j];
-                    vett[j] = vett[j + 1];
-                    vett[j + 1] = temp;
-                }
+            if (vett[j] > vett[j + 1]) {
+                int temp = vett[j];
+                vett[j] = vett[j + 1];
+                vett[j + 1] = temp;
             }
         }
-        i++;
+    }
+}
+
+void bubbleSortDECRE(int vett[], int dim){
+    for (int i = 0; i < dim - 1; i++) {
+        for (int j = 0; j < dim - 1 - i; j++) {
+            if (vett[j] < vett[j + 1]) {
+                int temp = vett[j];
+                vett[j] = vett[j + 1];
+                vett[j + 1] = temp;
+            }
+        }
     }
 }
 
@@ -174,4 +170,52 @@ int maxSumM(int _rows, int _cols, int _m[_rows][_cols], int *somma) {
     *somma = totale;
     return max;
 }   
+
+float mediaMatrice(int _rows, int _cols, int _m[_rows][_cols]) {
+    if (_rows <= 0 || _cols <= 0) {
+        return 0;
+    }
+
+    float totale = 0;
+    for (int i = 0; i < _rows; i++) {
+        for (int j = 0; j < _cols; j++) {
+            totale += _m[i][j];
+        }
+    }
+
+    return totale / (_rows * _cols);
+}
+
+void MatriceSommaRighe(int _rows, int _cols, int _m[_rows][_cols]) {
+    for (int i = 0; i < _rows; i++) {
+        int somma = 0;
+        for (int j = 0; j < _cols; j++) {
+            printf("%3d ", _m[i][j]);
+            somma += _m[i][j];
+        }
+        printf("| Somma della riga: %d\n", somma);
+    }
+}
+
+void sommaTriangoli(int _rows, int _cols, int _m[_rows][_cols]) {
+    int sommaInf = 0;
+    int sommaSup = 0;
+
+    for (int i = 0; i < _rows; i++) {
+        for (int j = 0; j < _cols; j++) {
+            if (i >= j) {
+                sommaInf += _m[i][j];
+            }
+            if (j >= i) {
+                sommaSup += _m[i][j];
+            }
+        }
+    }
+
+    printf("Somma triangolo inferiore: %d\n", sommaInf);
+    printf("Somma triangolo superiore: %d\n", sommaSup);
+}
+
+
+
 

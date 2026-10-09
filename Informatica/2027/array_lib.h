@@ -75,12 +75,20 @@ float mediaVettore(int _vet[], int _dim);
  bool stampaSubArray(int _vet[], int _dim, int _index1, int _index2);
 
  /**
- * Ordina un vettore in ordine crescente o decrescente.
+ * Ordina un vettore in ordine crescente.
  * @param _vet Vettore da ordinare.
  * @param dim Dimensione del vettore.
- * @param _mode Modalità di ordinamento: valore positivo per crescente, valore negativo per decrescente.
  */
-void bubbleSort(int _vet[], int dim, int _mode);
+void bubbleSortCRESCE(int vett[], int dim);
+
+ /**
+ * Ordina un vettore in ordine decrescente.
+ * @param _vet Vettore da ordinare.
+ * @param dim Dimensione del vettore.
+ */
+void bubbleSortDECRE(int vett[], int dim);
+
+
 
 /*--------------------------------------------------------------------------------------------------------------*/
 
@@ -117,3 +125,26 @@ bool scacchieraM(int _rows, int _cols, int _m[_rows][_cols]);
  * @return Il valore massimo calcolato.
  */
 int maxSumM(int _rows, int _cols, int _m[_rows][_cols], int *somma);
+
+/** Calcola la media aritmetica degli elementi di una matrice.
+ * @param _rows Numero di righe della matrice.
+ * @param _cols Numero di colonne della matrice.
+ * @param _m Matrice di cui calcolare la media.
+ * @return La media aritmetica degli elementi della matrice.
+ */
+float mediaMatrice(int _rows, int _cols, int _m[_rows][_cols]);
+
+/** Somma gli elementi di ciascuna riga della matrice e stampa il risultato.
+ * @param _rows Numero di righe della matrice.
+ * @param _cols Numero di colonne della matrice.
+ * @param _m Matrice di cui calcolare la somma per riga.
+ */
+void MatriceSommaRighe(int _rows, int _cols, int _m[_rows][_cols]);
+
+/** Calcola la somma dei valori presenti nei triangoli di una matrice quadrata.
+ * @param _rows Numero di righe della matrice.
+ * @param _cols Numero di colonne della matrice.
+ * @param _m Matrice di cui calcolare la somma dei triangoli.
+ */
+void sommaTriangoli(int _rows, int _cols, int _m[_rows][_cols]);
+
