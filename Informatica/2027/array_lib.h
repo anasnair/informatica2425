@@ -158,3 +158,14 @@ void sommaTriangoli(int _rows, int _cols, int _m[_rows][_cols]);
  */
 int trovaVetMatrice(int _rows, int _cols, int m[_rows][_cols], int vet[]);
 
+/** Genera un codice segreto composto da 5 valori.
+ * @param codiceSegreto Array di lunghezza 5 in cui verrà scritto il codice segreto.
+ */
+void creaCodiceSegreto(int codiceSegreto[5]);
+
+/** Richiede all'utente di inserire un codice composto da 5 valori.
+ * @param codiceUtente Array di lunghezza 5 in cui verrà salvato il codice inserito dall'utente.
+ */
+void richiediCodiceUtente(int codiceUtente[5]);
+
+void verificaStampaCodice(int codiceSegreto[5], int codiceUtente[5]);

@@ -232,6 +232,30 @@ int trovaVetMatrice(int _rows, int _cols, int m[_rows][_cols], int vet[]) {
     return 0;
 }
 
+void creaCodiceSegreto(int codiceSegreto[5]) {
+    srand(time(NULL));
 
+    for (int i = 0; i < 5; i++) {
+        codiceSegreto[i] = rand() % 10;
+    }
+}
 
+void richiediCodiceUtente(int codiceUtente[5]) {
+    int i;
 
+    printf("Inserisci 5 cifre (da 0 a 9):\n");
+    for (i = 0; i < 5; i++) {
+        scanf("%d", &codiceUtente[i]);
+    }
+}
+
+void verificaStampaCodice(int codiceSegreto[5], int codiceUtente[5]) {
+    for (int i = 0; i < 5; i++) {
+        if (codiceSegreto[i] == codiceUtente[i]) {
+            printf("%d", codiceUtente[i]);
+        } else {
+            printf("?");
+        }
+    }
+    printf("\n");
+}
