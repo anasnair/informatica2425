@@ -33,25 +33,37 @@ void richiediCodiceUtente(int codiceUtente[5]) {
     }
 }
 
-void verificaStampaCodice(int codiceSegreto[5], int codiceUtente[5]) {
+int verificaStampaCodice(int codiceSegreto[5], int codiceUtente[5]) {
+    int codiceEsatto = 1;
+
     for (int i = 0; i < 5; i++) {
         if (codiceSegreto[i] == codiceUtente[i]) {
             printf("%d", codiceUtente[i]);
         } else {
             printf("?");
+            codiceEsatto = 0;
         }
     }
     printf("\n");
+    return codiceEsatto;
 }
 
 int main() {
     int codiceSegreto[5];
     int codiceUtente[5];
+    int tentativi = 0;
+    int indovinato;
 
-
+    srand((unsigned int)time(NULL));
     creaCodiceSegreto(codiceSegreto);
-    richiediCodiceUtente(codiceUtente);
-    verificaStampaCodice(codiceSegreto, codiceUtente);
+
+    do {
+        richiediCodiceUtente(codiceUtente);
+        tentativi++;
+        indovinato = verificaStampaCodice(codiceSegreto, codiceUtente);
+    } while (!indovinato);
+
+    printf("Hai indovinato il codice in %d tentativi!\n", tentativi);
 
     return 0;
 }
