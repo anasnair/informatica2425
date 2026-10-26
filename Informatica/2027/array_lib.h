@@ -168,4 +168,8 @@ void creaCodiceSegreto(int codiceSegreto[5]);
  */
 void richiediCodiceUtente(int codiceUtente[5]);
 
+/** Confronta il codice inserito dall'utente con quello segreto e stampa il risultato.
+ * @param codiceSegreto Array di lunghezza 5 contenente il codice da indovinare.
+ * @param codiceUtente Array di lunghezza 5 contenente il codice inserito dall'utente.
+ */
 void verificaStampaCodice(int codiceSegreto[5], int codiceUtente[5]);
