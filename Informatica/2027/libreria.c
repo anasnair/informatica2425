@@ -3,7 +3,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "array_lib.h"
+#include "libreria.h"
 
 void inizializza(int vett[], int dimensione) {
 	for (int i = 0; i < dimensione; i++) {
@@ -259,3 +259,23 @@ void verificaStampaCodice(int codiceSegreto[5], int codiceUtente[5]) {
     }
     printf("\n");
 }
+
+
+
+ /*--------------------------------- STRINGHE ---------------------------------------*/
+
+ void initStringa(int _dim, char _str[]){
+    int i=0;
+    for(i=0; i<_dim; i++)
+        _str[i] = '\0';
+ }
+
+ int lunghezzaStringa(int _dim, char _str[]){
+    int len = 0;
+
+    while(_str[len] != '\0')
+        len++;
+
+    return len;
+
+ }

@@ -173,3 +173,20 @@ void richiediCodiceUtente(int codiceUtente[5]);
  * @param codiceUtente Array di lunghezza 5 contenente il codice inserito dall'utente.
  */
 void verificaStampaCodice(int codiceSegreto[5], int codiceUtente[5]);
+
+
+
+/*--------------------------------------------------------------- STRINGHE -------------------------------------------------------------------------------*/
+
+/** Inizializza una stringa.
+ * @param _dim Dimensione del buffer.
+ * @param _str Stringa da inizializzare.
+ */
+void initStringa(int _dim, char _str[]);
+
+/** Calcola la lunghezza di una stringa.
+ * @param _dim Dimensione del buffer.
+ * @param _str Stringa di cui calcolare la lunghezza.
+ * @return Numero di caratteri della stringa.
+ */
+int lunghezzaStringa(int _dim, char _str[]);
